@@ -588,7 +588,6 @@ header a.logo svg {
 }
 
 .joy-intro {
-  padding-top: 3rem;
   background: #000;
   color: #fff;
   margin-bottom: 5rem;
@@ -602,7 +601,7 @@ header a.logo svg {
   margin-bottom: 8rem;
 }
 
-.joy-intro #scroll {
+#scroll {
   position: relative;
   margin: 0 auto;
   border: none;
@@ -610,72 +609,78 @@ header a.logo svg {
   padding-bottom: 2rem;
 }
 
-.joy-intro #scroll .scroll__graphic {
+#scroll .scroll__graphic {
   width: 100%;
   height: 100vh;
-  top: 0px;
-  left: 0px;
+  top: 0;
+  left: 0;
   position: absolute;
-  -webkit-transform: translate3d(0, 0, 0, 0);
+  -webkit-transform: translate3d(0, 0, 0);
   transform: translate3d(0, 0, 0, 0);
+  bottom: auto;
 }
 
-.joy-intro #scroll .scroll__graphic .chart {
+#scroll .scroll__graphic .chart {
   position: absolute;
   width: 60%;
   background: #000;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
   margin: 0 auto;
   margin-left: 40%;
 }
 
-.joy-intro #scroll .scroll__graphic .chart svg {
+#scroll .scroll__graphic .chart svg {
   overflow: visible;
 }
 
-.joy-intro #scroll .scroll__graphic .chart svg .axis--x .tick line {
+#scroll .scroll__graphic .chart svg .axis--x .tick line {
   stroke: #fff;
 }
 
-.joy-intro #scroll .scroll__graphic .chart svg .axis--x .tick text {
+#scroll .scroll__graphic .chart svg .axis--x .tick text {
   font-size: 0.7rem;
   font-family: 'Atlas Grotesk Web';
   fill: #fff;
   font-weight: 500;
 }
 
-.joy-intro #scroll .scroll__graphic .chart svg .axis--activity .tick text {
+#scroll .scroll__graphic .chart svg .axis--activity .tick text {
   font-size: 0.8rem;
   font-family: 'Atlas Grotesk Web';
   fill: #fff;
 }
 
-.joy-intro #scroll .scroll__text {
+#scroll .scroll__text {
+  padding-top: 3rem;
   position: relative;
   width: 30%;
   margin-left: 10%;
 }
 
-.joy-intro #scroll .scroll__text .step {
-  margin-bottom: 2rem;
+#scroll .scroll__text .step {
+  margin-bottom: 50rem;
 }
 
-.joy-intro #scroll .scroll__text .step h4 {
+#scroll .scroll__text .step h4 {
   font-family: 'Atlas Grotesk Web';
   text-align: left;
 }
 
-.joy-intro #scroll .scroll__text .step p {
+#scroll .scroll__text .step p {
   text-align: left;
   font-size: 0.9rem;
   font-family: 'Atlas Grotesk Web';
   line-height: 1.8;
 }
 
-.joy-intro #scroll .is-fixed {
+#scroll .is-fixed {
   position: fixed;
 }
 
-.joy-intro #scroll .is-bottom {
+#scroll .is-bottom {
   bottom: 0;
   top: auto;
 }
@@ -907,6 +912,7 @@ p.joy_text {
 
 .waffle_main_title {
   font-family: Gill Sans;
+  font-size: 50px;
 }
 
 .legend {
