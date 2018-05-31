@@ -56,7 +56,7 @@ var WaffleChart = function() {
 
     var formattedData = [];
     var domain = [];
-    var value = $_keys[$_keys.length - 1];
+    var value = $_keys[$_keys.length - 2];
     var total = d3v3.sum(_obj.data, function(d) { return d[value]; });
 
     if ($_useWidth) {
@@ -180,7 +180,6 @@ var WaffleChart = function() {
       })
       .append("title")
       .text(function (d, i) {
-        // console.log(d);
         return _obj.data[d.groupIndex][$_keys[0]] + ": " + Math.round((d.units / formattedData.length) * 100) + "%";
       })
       .attr("stroke", "black")
@@ -190,24 +189,6 @@ var WaffleChart = function() {
     var tooltip = d3.select($_selector).append("div") 
     .attr("class", "tooltip")       
     .style("opacity", 0);
-
-    // d3v3.selectAll('.unit')
-    //   .on('mouseover', function(d) {
-    //     console.log(Math.round((d.units / formattedData.length) * 100) + "%");
-    //     tooltip.transition()   
-    //             .duration(200)    
-    //             .style("opacity", .9);
-    //             console.log(_obj.data[d.groupIndex]);
-    //     tooltip.html(_obj.data[d.groupIndex][$_keys[0]] + ": " + Math.round((d.units / formattedData.length) * 100) + "%")
-    //       .style("left", (d3v3.event.pageX) + "px")   
-    //       .style("top", (d3v3.event.pageY - 10) + "px");
-    //   })
-    //   .on("mouseout", function(d) {   
-    //         tooltip.transition()   
-    //             .style("opacity", 0); 
-    //     });;
-
-
 
     if (_obj.rounded) {
       item
@@ -298,10 +279,11 @@ var WaffleChart = function() {
 };
 
 
-d3v3.csv("assets/waffle_AdidasSkateboarding.csv", function(err, data) {
+d3v3.csv("assets/waffle.csv", function(err, data) {
       if (err) {
         console.error(err);
       } else {
+        var data = data.filter(d => d.company == '411')
         var waffle = new WaffleChart()
           .selector(".waffle_row_1")
           .title('411')
@@ -315,11 +297,11 @@ d3v3.csv("assets/waffle_AdidasSkateboarding.csv", function(err, data) {
       }
     });
 
-
-d3v3.csv("assets/waffle_CallMe917.csv", function(err, data) {
+d3v3.csv("assets/waffle.csv", function(err, data) {
       if (err) {
         console.error(err);
       } else {
+        var data = data.filter(d => d.company == '917')
         var waffle = new WaffleChart()
           .selector(".waffle_row_13")
           .title('917')
@@ -333,10 +315,11 @@ d3v3.csv("assets/waffle_CallMe917.csv", function(err, data) {
       }
     });
 
-d3v3.csv("assets/waffle_AdidasSkateboarding.csv", function(err, data) {
+d3v3.csv("assets/waffle.csv", function(err, data) {
       if (err) {
         console.error(err);
       } else {
+        var data = data.filter(d => d.company == 'adidas')
         var waffle = new WaffleChart()
           .selector(".waffle_row_25")
           .title('Adidas')
@@ -350,10 +333,11 @@ d3v3.csv("assets/waffle_AdidasSkateboarding.csv", function(err, data) {
       }
     });
 
-d3v3.csv("assets/waffle_AlienWorkshop.csv", function(err, data) {
+d3v3.csv("assets/waffle.csv", function(err, data) {
       if (err) {
         console.error(err);
       } else {
+        var data = data.filter(d => d.company == 'aws')
         var waffle = new WaffleChart()
           .selector(".waffle_row_37")
           .title('Alien Workshop')
@@ -367,10 +351,11 @@ d3v3.csv("assets/waffle_AlienWorkshop.csv", function(err, data) {
       }
     });
 
-d3v3.csv("assets/waffle_Almost.csv", function(err, data) {
+d3v3.csv("assets/waffle.csv", function(err, data) {
       if (err) {
         console.error(err);
       } else {
+        var data = data.filter(d => d.company == 'almost')
         var waffle = new WaffleChart()
           .selector(".waffle_row_2")
           .title('Almost')
@@ -384,10 +369,11 @@ d3v3.csv("assets/waffle_Almost.csv", function(err, data) {
       }
     });
 
-d3v3.csv("assets/waffle_AntiHeroSkateboards.csv", function(err, data) {
+d3v3.csv("assets/waffle.csv", function(err, data) {
       if (err) {
         console.error(err);
       } else {
+        var data = data.filter(d => d.company == 'antihero')
         var waffle = new WaffleChart()
           .selector(".waffle_row_14")
           .title('Anti Hero')
@@ -401,10 +387,11 @@ d3v3.csv("assets/waffle_AntiHeroSkateboards.csv", function(err, data) {
       }
     });
 
-d3v3.csv("assets/waffle_BaconSkateboards.csv", function(err, data) {
+d3v3.csv("assets/waffle.csv", function(err, data) {
       if (err) {
         console.error(err);
       } else {
+        var data = data.filter(d => d.company == 'bacon')
         var waffle = new WaffleChart()
           .selector(".waffle_row_26")
           .title('Bacon')
@@ -418,10 +405,11 @@ d3v3.csv("assets/waffle_BaconSkateboards.csv", function(err, data) {
       }
     });
 
-d3v3.csv("assets/waffle_BakerSkateboards.csv", function(err, data) {
+d3v3.csv("assets/waffle.csv", function(err, data) {
       if (err) {
         console.error(err);
       } else {
+        var data = data.filter(d => d.company == 'baker')
         var waffle = new WaffleChart()
           .selector(".waffle_row_38")
           .title('Baker')
@@ -435,10 +423,11 @@ d3v3.csv("assets/waffle_BakerSkateboards.csv", function(err, data) {
       }
     });
 
-d3v3.csv("assets/waffle_BirdhouseSkateboards.csv", function(err, data) {
+d3v3.csv("assets/waffle.csv", function(err, data) {
       if (err) {
         console.error(err);
       } else {
+        var data = data.filter(d => d.company == 'birdhouse')
         var waffle = new WaffleChart()
           .selector(".waffle_row_3")
           .title('Birdhouse')
@@ -452,10 +441,11 @@ d3v3.csv("assets/waffle_BirdhouseSkateboards.csv", function(err, data) {
       }
     });
 
-d3v3.csv("assets/waffle_BlackLabelSkateboards.csv", function(err, data) {
+d3v3.csv("assets/waffle.csv", function(err, data) {
       if (err) {
         console.error(err);
       } else {
+        var data = data.filter(d => d.company == 'blacklabel')
         var waffle = new WaffleChart()
           .selector(".waffle_row_15")
           .title('Black Label')
@@ -469,10 +459,11 @@ d3v3.csv("assets/waffle_BlackLabelSkateboards.csv", function(err, data) {
       }
     });
 
-d3v3.csv("assets/waffle_BlindSkateboards.csv", function(err, data) {
+d3v3.csv("assets/waffle.csv", function(err, data) {
       if (err) {
         console.error(err);
       } else {
+        var data = data.filter(d => d.company == 'blind')
         var waffle = new WaffleChart()
           .selector(".waffle_row_27")
           .title('Blind')
@@ -486,10 +477,11 @@ d3v3.csv("assets/waffle_BlindSkateboards.csv", function(err, data) {
       }
     });
 
-d3v3.csv("assets/waffle_BloodWizardSkateboards.csv", function(err, data) {
+d3v3.csv("assets/waffle.csv", function(err, data) {
       if (err) {
         console.error(err);
       } else {
+        var data = data.filter(d => d.company == 'bloodwizard')
         var waffle = new WaffleChart()
           .selector(".waffle_row_39")
           .title('Blood Wizard')
@@ -503,10 +495,11 @@ d3v3.csv("assets/waffle_BloodWizardSkateboards.csv", function(err, data) {
       }
     });
 
-d3v3.csv("assets/waffle_BlueprintSkateboards.csv", function(err, data) {
+d3v3.csv("assets/waffle.csv", function(err, data) {
       if (err) {
         console.error(err);
       } else {
+        var data = data.filter(d => d.company == 'blueprint')
         var waffle = new WaffleChart()
           .selector(".waffle_row_4")
           .title('Blueprint')
@@ -520,10 +513,11 @@ d3v3.csv("assets/waffle_BlueprintSkateboards.csv", function(err, data) {
       }
     });
 
-d3v3.csv("assets/waffle_ChocolateSkateboards.csv", function(err, data) {
+d3v3.csv("assets/waffle.csv", function(err, data) {
       if (err) {
         console.error(err);
       } else {
+        var data = data.filter(d => d.company == 'chocolate')
         var waffle = new WaffleChart()
           .selector(".waffle_row_16")
           .title('Chocolate')
@@ -537,10 +531,11 @@ d3v3.csv("assets/waffle_ChocolateSkateboards.csv", function(err, data) {
       }
     });
 
-d3v3.csv("assets/waffle_ClichéSkateboards.csv", function(err, data) {
+d3v3.csv("assets/waffle.csv", function(err, data) {
       if (err) {
         console.error(err);
       } else {
+        var data = data.filter(d => d.company == 'cliche')
         var waffle = new WaffleChart()
           .selector(".waffle_row_28")
           .title('Cliché')
@@ -554,10 +549,11 @@ d3v3.csv("assets/waffle_ClichéSkateboards.csv", function(err, data) {
       }
     });
 
-d3v3.csv("assets/waffle_ConsolidatedSkateboards.csv", function(err, data) {
+d3v3.csv("assets/waffle.csv", function(err, data) {
       if (err) {
         console.error(err);
       } else {
+        var data = data.filter(d => d.company == 'consolidated')
         var waffle = new WaffleChart()
           .selector(".waffle_row_40")
           .title('Consolidated')
@@ -571,10 +567,11 @@ d3v3.csv("assets/waffle_ConsolidatedSkateboards.csv", function(err, data) {
       }
     });
 
-d3v3.csv("assets/waffle_CreatureSkateboards.csv", function(err, data) {
+d3v3.csv("assets/waffle.csv", function(err, data) {
       if (err) {
         console.error(err);
       } else {
+        var data = data.filter(d => d.company == 'creature')
         var waffle = new WaffleChart()
           .selector(".waffle_row_5")
           .title('Creature')
@@ -588,10 +585,11 @@ d3v3.csv("assets/waffle_CreatureSkateboards.csv", function(err, data) {
       }
     });
 
-d3v3.csv("assets/waffle_DCShoes.csv", function(err, data) {
+d3v3.csv("assets/waffle.csv", function(err, data) {
       if (err) {
         console.error(err);
       } else {
+        var data = data.filter(d => d.company == 'dc')
         var waffle = new WaffleChart()
           .selector(".waffle_row_17")
           .title('DC Shoes')
@@ -605,10 +603,11 @@ d3v3.csv("assets/waffle_DCShoes.csv", function(err, data) {
       }
     });
 
-d3v3.csv("assets/waffle_DeathwishSkateboards.csv", function(err, data) {
+d3v3.csv("assets/waffle.csv", function(err, data) {
       if (err) {
         console.error(err);
       } else {
+        var data = data.filter(d => d.company == 'deathwish')
         var waffle = new WaffleChart()
           .selector(".waffle_row_29")
           .title('Deathwish')
@@ -622,10 +621,11 @@ d3v3.csv("assets/waffle_DeathwishSkateboards.csv", function(err, data) {
       }
     });
 
-d3v3.csv("assets/waffle_DGKSkateboards.csv", function(err, data) {
+d3v3.csv("assets/waffle.csv", function(err, data) {
       if (err) {
         console.error(err);
       } else {
+        var data = data.filter(d => d.company == 'dgk')
         var waffle = new WaffleChart()
           .selector(".waffle_row_41")
           .title('D.G.K.')
@@ -639,10 +639,11 @@ d3v3.csv("assets/waffle_DGKSkateboards.csv", function(err, data) {
       }
     });
 
-d3v3.csv("assets/waffle_DVSShoes.csv", function(err, data) {
+d3v3.csv("assets/waffle.csv", function(err, data) {
       if (err) {
         console.error(err);
       } else {
+        var data = data.filter(d => d.company == 'dvs')
         var waffle = new WaffleChart()
           .selector(".waffle_row_6")
           .title('DVS Shoes')
@@ -656,10 +657,11 @@ d3v3.csv("assets/waffle_DVSShoes.csv", function(err, data) {
       }
     });
 
-d3v3.csv("assets/waffle_ElementSkateboards.csv", function(err, data) {
+d3v3.csv("assets/waffle.csv", function(err, data) {
       if (err) {
         console.error(err);
       } else {
+        var data = data.filter(d => d.company == 'element')
         var waffle = new WaffleChart()
           .selector(".waffle_row_18")
           .title('Element')
@@ -673,10 +675,11 @@ d3v3.csv("assets/waffle_ElementSkateboards.csv", function(err, data) {
       }
     });
 
-d3v3.csv("assets/waffle_Emerica.csv", function(err, data) {
+d3v3.csv("assets/waffle.csv", function(err, data) {
       if (err) {
         console.error(err);
       } else {
+        var data = data.filter(d => d.company == 'emerica')
         var waffle = new WaffleChart()
           .selector(".waffle_row_30")
           .title('Emerica')
@@ -690,10 +693,11 @@ d3v3.csv("assets/waffle_Emerica.csv", function(err, data) {
       }
     });
 
-d3v3.csv("assets/waffle_Enjoi.csv", function(err, data) {
+d3v3.csv("assets/waffle.csv", function(err, data) {
       if (err) {
         console.error(err);
       } else {
+        var data = data.filter(d => d.company == 'enjoi')
         var waffle = new WaffleChart()
           .selector(".waffle_row_42")
           .title('Enjoi')
@@ -708,10 +712,11 @@ d3v3.csv("assets/waffle_Enjoi.csv", function(err, data) {
     });
 
 
-d3v3.csv("assets/waffle_FlipSkateboards.csv", function(err, data) {
+d3v3.csv("assets/waffle.csv", function(err, data) {
       if (err) {
         console.error(err);
       } else {
+        var data = data.filter(d => d.company == 'flip')
         var waffle = new WaffleChart()
           .selector(".waffle_row_7")
           .title('Flip')
@@ -725,10 +730,11 @@ d3v3.csv("assets/waffle_FlipSkateboards.csv", function(err, data) {
       }
     });
 
-d3v3.csv("assets/waffle_Foundationskateboards.csv", function(err, data) {
+d3v3.csv("assets/waffle.csv", function(err, data) {
       if (err) {
         console.error(err);
       } else {
+        var data = data.filter(d => d.company == 'foundation')
         var waffle = new WaffleChart()
           .selector(".waffle_row_19")
           .title('Foundation')
@@ -742,10 +748,11 @@ d3v3.csv("assets/waffle_Foundationskateboards.csv", function(err, data) {
       }
     });
 
-d3v3.csv("assets/waffle_GirlSkateboards.csv", function(err, data) {
+d3v3.csv("assets/waffle.csv", function(err, data) {
       if (err) {
         console.error(err);
       } else {
+        var data = data.filter(d => d.company == 'girl')
         var waffle = new WaffleChart()
           .selector(".waffle_row_31")
           .title('Girl')
@@ -759,10 +766,11 @@ d3v3.csv("assets/waffle_GirlSkateboards.csv", function(err, data) {
       }
     });
 
-d3v3.csv("assets/waffle_HabitatSkateboards.csv", function(err, data) {
+d3v3.csv("assets/waffle.csv", function(err, data) {
       if (err) {
         console.error(err);
       } else {
+        var data = data.filter(d => d.company == 'habitat')
         var waffle = new WaffleChart()
           .selector(".waffle_row_43")
           .title('Habitat')
@@ -776,10 +784,11 @@ d3v3.csv("assets/waffle_HabitatSkateboards.csv", function(err, data) {
       }
     });
 
-d3v3.csv("assets/waffle_KrookedSkateboards.csv", function(err, data) {
+d3v3.csv("assets/waffle.csv", function(err, data) {
       if (err) {
         console.error(err);
       } else {
+        var data = data.filter(d => d.company == 'krooked')
         var waffle = new WaffleChart()
           .selector(".waffle_row_8")
           .title('Krooked')
@@ -793,10 +802,11 @@ d3v3.csv("assets/waffle_KrookedSkateboards.csv", function(err, data) {
       }
     });
 
-d3v3.csv("assets/waffle_LakaiLimitedFootwear.csv", function(err, data) {
+d3v3.csv("assets/waffle.csv", function(err, data) {
       if (err) {
         console.error(err);
       } else {
+        var data = data.filter(d => d.company == 'lakai')
         var waffle = new WaffleChart()
           .selector(".waffle_row_20")
           .title('Lakai')
@@ -810,10 +820,11 @@ d3v3.csv("assets/waffle_LakaiLimitedFootwear.csv", function(err, data) {
       }
     });
 
-d3v3.csv("assets/waffle_Lurkville.csv", function(err, data) {
+d3v3.csv("assets/waffle.csv", function(err, data) {
       if (err) {
         console.error(err);
       } else {
+        var data = data.filter(d => d.company == 'lurkville')
         var waffle = new WaffleChart()
           .selector(".waffle_row_33")
           .title('Lurkville')
@@ -827,10 +838,11 @@ d3v3.csv("assets/waffle_Lurkville.csv", function(err, data) {
       }
     });
 
-d3v3.csv("assets/waffle_OsirisShoes.csv", function(err, data) {
+d3v3.csv("assets/waffle.csv", function(err, data) {
       if (err) {
         console.error(err);
       } else {
+        var data = data.filter(d => d.company == 'osiris')
         var waffle = new WaffleChart() 
           .selector(".waffle_row_44")
           .title('Osiris Shoes')
@@ -845,10 +857,11 @@ d3v3.csv("assets/waffle_OsirisShoes.csv", function(err, data) {
     });
 
 
-d3v3.csv("assets/waffle_GirlSkateboards.csv", function(err, data) {
+d3v3.csv("assets/waffle.csv", function(err, data) {
       if (err) {
         console.error(err);
       } else {
+        var data = data.filter(d => d.company == 'planb')
         var waffle = new WaffleChart() 
           .selector(".waffle_row_21")
           .title('Plan B')
@@ -862,10 +875,11 @@ d3v3.csv("assets/waffle_GirlSkateboards.csv", function(err, data) {
       }
     });
 
-d3v3.csv("assets/waffle_PolarSkateCo.csv", function(err, data) {
+d3v3.csv("assets/waffle.csv", function(err, data) {
       if (err) {
         console.error(err);
       } else {
+        var data = data.filter(d => d.company == 'polar')
         var waffle = new WaffleChart() 
           .selector(".waffle_row_33")
           .title('Polar')
@@ -879,10 +893,11 @@ d3v3.csv("assets/waffle_PolarSkateCo.csv", function(err, data) {
       }
     });
 
-d3v3.csv("assets/waffle_PyramidCountry.csv", function(err, data) {
+d3v3.csv("assets/waffle.csv", function(err, data) {
       if (err) {
         console.error(err);
       } else {
+        var data = data.filter(d => d.company == 'pyramidcountry')
         var waffle = new WaffleChart() 
           .selector(".waffle_row_45")
           .title('Pyramid Country')
@@ -896,10 +911,11 @@ d3v3.csv("assets/waffle_PyramidCountry.csv", function(err, data) {
       }
     });
 
-d3v3.csv("assets/waffle_SK8MAFIA.csv", function(err, data) {
+d3v3.csv("assets/waffle.csv", function(err, data) {
       if (err) {
         console.error(err);
       } else {
+        var data = data.filter(d => d.company == 'sk8mafia')
         var waffle = new WaffleChart() 
           .selector(".waffle_row_10")
           .title('SK8MAFIA')
@@ -913,10 +929,11 @@ d3v3.csv("assets/waffle_SK8MAFIA.csv", function(err, data) {
       }
     });
 
-d3v3.csv("assets/waffle_PigWheels.csv", function(err, data) {
+d3v3.csv("assets/waffle.csv", function(err, data) {
       if (err) {
         console.error(err);
       } else {
+        var data = data.filter(d => d.company == 'pig')
         var waffle = new WaffleChart() 
           .selector(".waffle_row_9")
           .title('Pig Wheels')
@@ -930,10 +947,11 @@ d3v3.csv("assets/waffle_PigWheels.csv", function(err, data) {
       }
     });
 
-d3v3.csv("assets/waffle_SlaveSkateboards.csv", function(err, data) {
+d3v3.csv("assets/waffle.csv", function(err, data) {
       if (err) {
         console.error(err);
       } else {
+        var data = data.filter(d => d.company == 'slave')
         var waffle = new WaffleChart() 
           .selector(".waffle_row_22")
           .title('$LAVE')
@@ -947,10 +965,11 @@ d3v3.csv("assets/waffle_SlaveSkateboards.csv", function(err, data) {
       }
     });
 
-d3v3.csv("assets/waffle_StereoSkateboards.csv", function(err, data) {
+d3v3.csv("assets/waffle.csv", function(err, data) {
       if (err) {
         console.error(err);
       } else {
+        var data = data.filter(d => d.company == 'stereo')
         var waffle = new WaffleChart() 
           .selector(".waffle_row_34")
           .title('Stereo')
@@ -964,10 +983,11 @@ d3v3.csv("assets/waffle_StereoSkateboards.csv", function(err, data) {
       }
     });
 
-d3v3.csv("assets/waffle_Supreme.csv", function(err, data) {
+d3v3.csv("assets/waffle.csv", function(err, data) {
       if (err) {
         console.error(err);
       } else {
+        var data = data.filter(d => d.company == 'supreme')
         var waffle = new WaffleChart() 
           .selector(".waffle_row_46")
           .title('Supreme')
@@ -981,10 +1001,11 @@ d3v3.csv("assets/waffle_Supreme.csv", function(err, data) {
       }
     });
 
-d3v3.csv("assets/waffle_ThrasherMagazine.csv", function(err, data) {
+d3v3.csv("assets/waffle.csv", function(err, data) {
       if (err) {
         console.error(err);
       } else {
+        var data = data.filter(d => d.company == 'thrasher')
         var waffle = new WaffleChart() 
           .selector(".waffle_row_11")
           .title('Thrasher')
@@ -998,10 +1019,11 @@ d3v3.csv("assets/waffle_ThrasherMagazine.csv", function(err, data) {
       }
     });
 
-d3v3.csv("assets/waffle_ToyMachine.csv", function(err, data) {
+d3v3.csv("assets/waffle.csv", function(err, data) {
       if (err) {
         console.error(err);
       } else {
+        var data = data.filter(d => d.company == 'toymachine')
         var waffle = new WaffleChart() 
           .selector(".waffle_row_23")
           .title('Toy Machine')
@@ -1015,10 +1037,11 @@ d3v3.csv("assets/waffle_ToyMachine.csv", function(err, data) {
       }
     });
 
-d3v3.csv("assets/waffle_TransworldSkateboarding.csv", function(err, data) {
+d3v3.csv("assets/waffle.csv", function(err, data) {
       if (err) {
         console.error(err);
       } else {
+        var data = data.filter(d => d.company == 'transworld')
         var waffle = new WaffleChart() 
           .selector(".waffle_row_35")
           .title('Transworld')
@@ -1032,10 +1055,11 @@ d3v3.csv("assets/waffle_TransworldSkateboarding.csv", function(err, data) {
       }
     });
 
-d3v3.csv("assets/waffle_Vans.csv", function(err, data) {
+d3v3.csv("assets/waffle.csv", function(err, data) {
       if (err) {
         console.error(err);
       } else {
+        var data = data.filter(d => d.company == 'vans')
         var waffle = new WaffleChart() 
           .selector(".waffle_row_47")
           .title('Vans')
@@ -1049,10 +1073,11 @@ d3v3.csv("assets/waffle_Vans.csv", function(err, data) {
       }
     });
 
-d3v3.csv("assets/waffle_Volcom.csv", function(err, data) {
+d3v3.csv("assets/waffle.csv", function(err, data) {
       if (err) {
         console.error(err);
       } else {
+        var data = data.filter(d => d.company == 'volcom')
         var waffle = new WaffleChart() 
           .selector(".waffle_row_12")
           .title('Volcom')
@@ -1066,10 +1091,11 @@ d3v3.csv("assets/waffle_Volcom.csv", function(err, data) {
       }
     });
 
-d3v3.csv("assets/waffle_VOXFootwear.csv", function(err, data) {
+d3v3.csv("assets/waffle.csv", function(err, data) {
       if (err) {
         console.error(err);
       } else {
+        var data = data.filter(d => d.company == 'vox')
         var waffle = new WaffleChart() 
           .selector(".waffle_row_24")
           .title('Vox Footwear')
@@ -1083,10 +1109,11 @@ d3v3.csv("assets/waffle_VOXFootwear.csv", function(err, data) {
       }
     });
 
-d3v3.csv("assets/waffle_ZeroSkateboards.csv", function(err, data) {
+d3v3.csv("assets/waffle.csv", function(err, data) {
       if (err) {
         console.error(err);
       } else {
+        var data = data.filter(d => d.company == 'zero')
         var waffle = new WaffleChart() 
           .selector(".waffle_row_36")
           .title('Zero')
@@ -1100,10 +1127,11 @@ d3v3.csv("assets/waffle_ZeroSkateboards.csv", function(err, data) {
       }
     });
 
-d3v3.csv("assets/waffle_ZooYork.csv", function(err, data) {
+d3v3.csv("assets/waffle.csv", function(err, data) {
       if (err) {
         console.error(err);
       } else {
+        var data = data.filter(d => d.company == 'zooyork')
         var waffle = new WaffleChart() 
           .selector(".waffle_row_48")
           .title('Zoo York')
